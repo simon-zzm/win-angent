@@ -14,6 +14,10 @@ files = {
         'file':('ttt.zip',open("E:\\ttt.zip", 'rb'),'application/octet-stream')
         }
 data = {'md5':'xxxxxxxxxxxx'} //md5验证没有启动
-
-res= requests.post("http://localhost:8866/upfile/",  files = files, params=data)
+# 上传批处理，并调用批处理删除上传文件。
+files = {
+        'file':('ttt.zip',open("E:\\del_file.bat", 'rb'),'application/octet-stream')
+        }
+_param = {'cline': "E:\\del_file.bat", 'md5': _md5}
+res= requests.post("http://localhost:8866/comm/",  params = _param)
 print res.url,res.text
